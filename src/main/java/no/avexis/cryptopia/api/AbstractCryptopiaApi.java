@@ -25,21 +25,34 @@ abstract class AbstractCryptopiaApi {
         return sb.toString();
     }
 
-    <T> T req(final T param) throws MissingParameterException {
+    <T> void req(final Pair<String, T> param) throws MissingParameterException {
         if (null == param) {
-            throw new MissingParameterException("A required field is missing");
+            throw new NullPointerException("Param can not be null");
+        } else if (isBlank(param.getKey())) {
+            throw new MissingParameterException("Param key is missing");
+        } else if (null == param.getValue()) {
+            throw new MissingParameterException("Param \"" + param.getKey() + "\" is required");
         }
-        return param;
     }
 
-    <T> T[] req(final T[] param) throws MissingParameterException {
+
+    <T> void req(final String name, final Object value) throws MissingParameterException {
+        if (null == value) {
+            throw new MissingParameterException("Param \"" + name + "\" is required");
+        }
+    }
+
+    <T> T[] reqArray(final String name, final T[] param) throws MissingParameterException {
         if (null == param || param.length < 1 || null == param[0]) {
-            throw new MissingParameterException("Array field is required and missing");
+            throw new MissingParameterException("Param \"" + name + "\" is required");
         }
         return param;
     }
 
     String arrayAsString(final String[] arr) {
+        if (null == arr || 0 == arr.length) {
+            return "";
+        }
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length - 1; i++) {
             sb.append(arr[i]);
@@ -74,5 +87,9 @@ abstract class AbstractCryptopiaApi {
         if (ifObj.equals(isObj) && null == reqObj) {
             throw new MissingParameterException("A required field is missing");
         }
+    }
+
+    private boolean isBlank(final String str) {
+        return null == str || str.trim().length() == 0;
     }
 }
