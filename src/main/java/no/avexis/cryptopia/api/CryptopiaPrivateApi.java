@@ -7,6 +7,7 @@ import no.avexis.cryptopia.client.CryptopiaPrivateClient;
 import no.avexis.cryptopia.exceptions.CryptopiaException;
 import no.avexis.cryptopia.models.priv.Balance;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
@@ -37,7 +38,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         final Pair<String, Object> currencyParam = new Pair<>(CURRENCY, currency);
         final Pair<String, Object> currencyIdParam = new Pair<>(CURRENCY_ID, currencyId);
 
-        final JsonObject params = toJsonObject(currencyParam, currencyIdParam);
+        final JsonObject params = toJsonObject(Arrays.asList(currencyParam, currencyIdParam));
         final JsonObject result = client.send("GetBalance", params);
         final JsonElement data = getData(result);
         return fromJson(data);
@@ -49,7 +50,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
 
         either(currency, currencyId);
 
-        final JsonObject params = toJsonObject(currencyParam, currencyIdParam);
+        final JsonObject params = toJsonObject(Arrays.asList(currencyParam, currencyIdParam));
         final JsonObject result = client.send("GetDepositAddress", params);
         final JsonElement data = getData(result);
         return fromJson(data);
@@ -63,7 +64,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
 
         either(market, tradePairId);
 
-        final JsonObject params = toJsonObject(marketParam, tradePairIdParam, countParam);
+        final JsonObject params = toJsonObject(Arrays.asList(marketParam, tradePairIdParam, countParam));
         final JsonObject result = client.send("GetTradeHistory", params);
         final JsonElement data = getData(result);
         return fromJson(data);
@@ -75,7 +76,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
 
         req(typeParam);
 
-        final JsonObject params = toJsonObject(typeParam, countParam);
+        final JsonObject params = toJsonObject(Arrays.asList(typeParam, countParam));
         final JsonObject result = client.send("GetTransactions", params);
         final JsonElement data = getData(result);
         return fromJson(data);
@@ -93,7 +94,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         req(amountParam);
         either(market, tradePairId);
 
-        final JsonObject params = toJsonObject(marketParam, tradePairIdParam, typeParam, rateParam, amountParam);
+        final JsonObject params = toJsonObject(Arrays.asList(marketParam, tradePairIdParam, typeParam, rateParam, amountParam));
         final JsonObject result = client.send("SubmitTrade", params);
         final JsonElement data = getData(result);
         return fromJson(data);
@@ -108,7 +109,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         reqIfIs(orderId, type.toLowerCase(), "trade");
         reqIfIs(tradePairId, type.toLowerCase(), "tradepair");
 
-        final JsonObject params = toJsonObject(typeParam, orderIdParam, tradePairIdParam);
+        final JsonObject params = toJsonObject(Arrays.asList(typeParam, orderIdParam, tradePairIdParam));
         final JsonObject result = client.send("CancelTrade", params);
         return result.get(SUCCESS).toString() + ": " + getData(result).toString();
     }
@@ -125,7 +126,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         if (null == activeUsers || activeUsers < 2 || activeUsers > 100) {
             throw new NullPointerException("ActiveUsers is invalid");
         }
-        final JsonObject params = toJsonObject(currencyParam, currencyIdParam, activeUsersParam, amountParam);
+        final JsonObject params = toJsonObject(Arrays.asList(currencyParam, currencyIdParam, activeUsersParam, amountParam));
         final JsonObject result = client.send("SubmitTip", params);
         return result.get(SUCCESS).toString() + ": " + getData(result).toString();
     }
@@ -142,7 +143,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         req(amountParam);
         either(currency, currencyId);
 
-        final JsonObject params = toJsonObject(currencyParam, currencyIdParam, addressParam, paymentIdParam, amountParam);
+        final JsonObject params = toJsonObject(Arrays.asList(currencyParam, currencyIdParam, addressParam, paymentIdParam, amountParam));
         final JsonObject result = client.send("SubmitWithdraw", params);
         return result.get(SUCCESS).toString() + ": " + getData(result).toString();
     }
@@ -157,7 +158,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         req(amountParam);
         either(currency, currencyId);
 
-        final JsonObject params = toJsonObject(currencyParam, currencyIdParam, usernameParam, amountParam);
+        final JsonObject params = toJsonObject(Arrays.asList(currencyParam, currencyIdParam, usernameParam, amountParam));
         final JsonObject result = client.send("SubmitTransfer", params);
         return result.get(SUCCESS).toString() + ": " + getData(result).toString();
     }

@@ -10,10 +10,11 @@ import no.avexis.cryptopia.models.pub.Currency;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract class AbstractCryptopiaApi {
 
-    static final Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     JsonElement getData(final JsonObject jsonObject) {
         return jsonObject.get("Data");
@@ -73,7 +74,7 @@ abstract class AbstractCryptopiaApi {
         return sb.toString();
     }
 
-    JsonObject toJsonObject(final Pair<String, Object>... pairs) {
+    JsonObject toJsonObject(final List<Pair<String, Object>> pairs) {
         JsonObject result = new JsonObject();
         boolean containsParams = false;
         for (final Pair<String, Object> p : pairs) {
