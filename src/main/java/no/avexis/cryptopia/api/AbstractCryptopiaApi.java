@@ -12,6 +12,7 @@ import java.util.List;
 
 abstract class AbstractCryptopiaApi {
 
+    private static final String PARAM_IS_REQUIRED = "Param \"%s\" is required";
     private static final Gson gson = new Gson();
 
     JsonElement getData(final JsonObject jsonObject) {
@@ -41,22 +42,21 @@ abstract class AbstractCryptopiaApi {
         } else if (isBlank(param.getKey())) {
             throw new MissingParameterException("Param key is missing");
         } else if (null == param.getValue()) {
-            throw new MissingParameterException("Param \"" + param.getKey() + "\" is required");
+            throw new MissingParameterException(String.format(PARAM_IS_REQUIRED, param.getKey()));
         }
     }
 
 
     void req(final String name, final Object value) throws MissingParameterException {
         if (null == value) {
-            throw new MissingParameterException("Param \"" + name + "\" is required");
+            throw new MissingParameterException(String.format(PARAM_IS_REQUIRED, name));
         }
     }
 
-    <T> T[] reqArray(final String name, final T[] param) throws MissingParameterException {
-        if (null == param || param.length < 1 || null == param[0]) {
-            throw new MissingParameterException("Param \"" + name + "\" is required");
+    void reqArray(final String name, final Object[] param) throws MissingParameterException {
+        if (null == param || param.length == 0) {
+            throw new MissingParameterException(String.format(PARAM_IS_REQUIRED, name));
         }
-        return param;
     }
 
     String arrayAsString(final String[] arr) {
