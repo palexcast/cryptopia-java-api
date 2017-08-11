@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
+import no.avexis.cryptopia.exceptions.CryptopiaException;
 import no.avexis.cryptopia.client.CryptopiaPrivateClient;
 import no.avexis.cryptopia.models.priv.Balance;
 
@@ -19,7 +20,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         client = new CryptopiaPrivateClient(publicKey, privateKey);
     }
 
-    public List<Balance> getBalance(final String currency, final Integer currencyId) throws Exception {
+    public List<Balance> getBalance(final String currency, final Integer currencyId) throws CryptopiaException {
         final JsonObject params = toJsonObject(new Pair<>("Currency", currency), new Pair<>("CurrencyId", currencyId));
         final JsonObject result = client.send("GetBalance", params);
         final JsonElement data = getData(result);
@@ -28,7 +29,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return gson.fromJson(data, listType);
     }
 
-    public List<Balance> getDepositAddress(final String currency, final Integer currencyId) throws Exception {
+    public List<Balance> getDepositAddress(final String currency, final Integer currencyId) throws CryptopiaException {
         either(currency, currencyId);
         final JsonObject params = toJsonObject(new Pair<>("Currency", currency), new Pair<>("CurrencyId", currencyId));
         final JsonObject result = client.send("GetDepositAddress", params);
@@ -39,7 +40,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
     }
 
 
-    public List<Balance> getTradeHistory(final String market, final Integer tradePairId, final Integer count) throws Exception {
+    public List<Balance> getTradeHistory(final String market, final Integer tradePairId, final Integer count) throws CryptopiaException {
         either(market, tradePairId);
         final JsonObject params = toJsonObject(new Pair<>("Market", market), new Pair<>("TradePairId", tradePairId), new Pair<>("Count", count));
         final JsonObject result = client.send("GetTradeHistory", params);
@@ -49,7 +50,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return gson.fromJson(data, listType);
     }
 
-    public List<Balance> getTransactions(final String type, final Integer count) throws Exception {
+    public List<Balance> getTransactions(final String type, final Integer count) throws CryptopiaException {
         final JsonObject params = toJsonObject(new Pair<>("Type", req(type)), new Pair<>("Count", count));
         final JsonObject result = client.send("GetTransactions", params);
         final JsonElement data = getData(result);
@@ -58,7 +59,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return gson.fromJson(data, listType);
     }
 
-    public List<Balance> submitTrade(final String market, final Integer tradePairId, final String type, final Double rate, final Double amount) throws Exception {
+    public List<Balance> submitTrade(final String market, final Integer tradePairId, final String type, final Double rate, final Double amount) throws CryptopiaException {
         either(market, tradePairId);
         final JsonObject params = toJsonObject(new Pair<>("Market", market), new Pair<>("TradePairId", tradePairId),
                 new Pair<>("Type", req(type)), new Pair<>("Rate", req(rate)), new Pair<>("Amount", req(amount)));
@@ -69,7 +70,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return gson.fromJson(data, listType);
     }
 
-    public String cancelTrade(final String type, final Integer orderId, final Integer tradePairId) throws Exception {
+    public String cancelTrade(final String type, final Integer orderId, final Integer tradePairId) throws CryptopiaException {
         reqIfIs(orderId, type.toLowerCase(), "trade");
         reqIfIs(tradePairId, type.toLowerCase(), "tradepair");
         final JsonObject params = toJsonObject(new Pair<>("Type", req(type)), new Pair<>("OrderId", orderId), new Pair<>("TradePairId", tradePairId));
@@ -77,7 +78,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return result.get("Success").toString() + ": " + getData(result).toString();
     }
 
-    public String submitTip(final String currency, final Integer currencyId, final Integer activeUsers, final Double amount) throws Exception {
+    public String submitTip(final String currency, final Integer currencyId, final Integer activeUsers, final Double amount) throws CryptopiaException {
         either(currency, currencyId);
         if (null == activeUsers || activeUsers < 2 || activeUsers > 100) {
             throw new NullPointerException("ActiveUsers is invalid");
@@ -88,7 +89,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return result.get("Success").toString() + ": " + getData(result).toString();
     }
 
-    public String submitWithdraw(final String currency, final Integer currencyId, final String address, final Integer paymentId, final Double amount) throws Exception {
+    public String submitWithdraw(final String currency, final Integer currencyId, final String address, final Integer paymentId, final Double amount) throws CryptopiaException {
         either(currency, currencyId);
         final JsonObject params = toJsonObject(new Pair<>("Currency", currency), new Pair<>("CurrencyId", currencyId),
                 new Pair<>("Address", req(address)), new Pair<>("PaymentId", req(paymentId)), new Pair<>("Amount", req(amount)));
@@ -96,7 +97,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         return result.get("Success").toString() + ": " + getData(result).toString();
     }
 
-    public String submitTransfer(final String currency, final Integer currencyId, final String username, final Double amount) throws Exception {
+    public String submitTransfer(final String currency, final Integer currencyId, final String username, final Double amount) throws CryptopiaException {
         either(currency, currencyId);
         final JsonObject params = toJsonObject(new Pair<>("Currency", currency), new Pair<>("CurrencyId", currencyId),
                 new Pair<>("Username", req(username)), new Pair<>("Amount", req(amount)));

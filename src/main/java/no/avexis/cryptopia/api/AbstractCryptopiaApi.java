@@ -4,10 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import javafx.util.Pair;
+import no.avexis.cryptopia.exceptions.MissingParameterException;
 
-public abstract class AbstractCryptopiaApi {
+abstract class AbstractCryptopiaApi {
 
-    protected static final Gson gson = new Gson();
+    static final Gson gson = new Gson();
 
     JsonElement getData(final JsonObject jsonObject) {
         return jsonObject.get("Data");
@@ -24,16 +25,16 @@ public abstract class AbstractCryptopiaApi {
         return sb.toString();
     }
 
-    <T> T req(final T param) {
+    <T> T req(final T param) throws MissingParameterException {
         if (null == param) {
-            throw new NullPointerException("A required field is missing");
+            throw new MissingParameterException("A required field is missing");
         }
         return param;
     }
 
-    <T> T[] req(final T[] param) {
+    <T> T[] req(final T[] param) throws MissingParameterException {
         if (null == param || param.length < 1 || null == param[0]) {
-            throw new NullPointerException("Array field is required and missing");
+            throw new MissingParameterException("Array field is required and missing");
         }
         return param;
     }
@@ -63,15 +64,15 @@ public abstract class AbstractCryptopiaApi {
         return null;
     }
 
-    void either(final Object obj1, final Object obj2) {
+    void either(final Object obj1, final Object obj2) throws MissingParameterException {
         if (null == obj1 && null == obj2) {
-            throw new NullPointerException("Atleast one field is required");
+            throw new MissingParameterException("Atleast one field is required");
         }
     }
 
-    void reqIfIs(final Object reqObj, final Object ifObj, final Object isObj){
-        if(ifObj.equals(isObj) && null == reqObj){
-            throw new NullPointerException("A required field is missing");
+    void reqIfIs(final Object reqObj, final Object ifObj, final Object isObj) throws MissingParameterException {
+        if (ifObj.equals(isObj) && null == reqObj) {
+            throw new MissingParameterException("A required field is missing");
         }
     }
 }
