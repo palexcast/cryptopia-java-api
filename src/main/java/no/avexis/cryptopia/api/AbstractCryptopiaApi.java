@@ -46,7 +46,7 @@ abstract class AbstractCryptopiaApi {
     }
 
 
-    <T> void req(final String name, final Object value) throws MissingParameterException {
+    void req(final String name, final Object value) throws MissingParameterException {
         if (null == value) {
             throw new MissingParameterException("Param \"" + name + "\" is required");
         }
