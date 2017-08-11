@@ -6,10 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
 import no.avexis.cryptopia.exceptions.MissingParameterException;
-import no.avexis.cryptopia.models.pub.Currency;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 abstract class AbstractCryptopiaApi {
