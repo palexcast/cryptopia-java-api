@@ -3,8 +3,13 @@ package no.avexis.cryptopia.api;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
 import no.avexis.cryptopia.exceptions.MissingParameterException;
+import no.avexis.cryptopia.models.pub.Currency;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 abstract class AbstractCryptopiaApi {
 
@@ -12,6 +17,12 @@ abstract class AbstractCryptopiaApi {
 
     JsonElement getData(final JsonObject jsonObject) {
         return jsonObject.get("Data");
+    }
+
+    <T> T fromJson(final JsonElement element) {
+        final Type listType = new TypeToken<T>() {
+        }.getType();
+        return gson.fromJson(element, listType);
     }
 
     String addParams(final String method, Object... params) {
