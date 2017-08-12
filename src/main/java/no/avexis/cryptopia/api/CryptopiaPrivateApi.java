@@ -6,8 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import javafx.util.Pair;
 import no.avexis.cryptopia.client.CryptopiaPrivateClient;
 import no.avexis.cryptopia.exceptions.CryptopiaException;
-import no.avexis.cryptopia.models.priv.Balance;
-import no.avexis.cryptopia.models.priv.DepositAddress;
+import no.avexis.cryptopia.models.priv.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +60,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
     }
 
 
-    public List<Balance> getTradeHistory(final String market, final Integer tradePairId, final Integer count) throws CryptopiaException {
+    public List<TradeHistory> getTradeHistory(final String market, final Integer tradePairId, final Integer count) throws CryptopiaException {
         final Pair<String, Object> marketParam = new Pair<>(MARKET, market);
         final Pair<String, Object> tradePairIdParam = new Pair<>(TRADE_PAIR_ID, tradePairId);
         final Pair<String, Object> countParam = new Pair<>(COUNT, count);
@@ -71,11 +70,11 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         final JsonObject params = toJsonObject(Arrays.asList(marketParam, tradePairIdParam, countParam));
         final JsonObject result = client.send("GetTradeHistory", params);
         final JsonElement data = getData(result);
-        return fromJson(data, new TypeToken<List<Balance>>() {
+        return fromJson(data, new TypeToken<List<TradeHistory>>() {
         }.getType());
     }
 
-    public List<Balance> getTransactions(final String type, final Integer count) throws CryptopiaException {
+    public List<Transaction> getTransactions(final String type, final Integer count) throws CryptopiaException {
         final Pair<String, Object> typeParam = new Pair<>(TYPE, type);
         final Pair<String, Object> countParam = new Pair<>(COUNT, count);
 
@@ -84,11 +83,11 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         final JsonObject params = toJsonObject(Arrays.asList(typeParam, countParam));
         final JsonObject result = client.send("GetTransactions", params);
         final JsonElement data = getData(result);
-        return fromJson(data, new TypeToken<List<Balance>>() {
+        return fromJson(data, new TypeToken<List<Transaction>>() {
         }.getType());
     }
 
-    public List<Balance> submitTrade(final String market, final Integer tradePairId, final String type, final Double rate, final Double amount) throws CryptopiaException {
+    public List<SubmitTrade> submitTrade(final String market, final Integer tradePairId, final String type, final Double rate, final Double amount) throws CryptopiaException {
         final Pair<String, Object> marketParam = new Pair<>(MARKET, market);
         final Pair<String, Object> tradePairIdParam = new Pair<>(TRADE_PAIR_ID, tradePairId);
         final Pair<String, Object> typeParam = new Pair<>(TYPE, type);
@@ -103,7 +102,7 @@ public class CryptopiaPrivateApi extends AbstractCryptopiaApi {
         final JsonObject params = toJsonObject(Arrays.asList(marketParam, tradePairIdParam, typeParam, rateParam, amountParam));
         final JsonObject result = client.send("SubmitTrade", params);
         final JsonElement data = getData(result);
-        return fromJson(data, new TypeToken<List<Balance>>() {
+        return fromJson(data, new TypeToken<SubmitTrade>() {
         }.getType());
     }
 
