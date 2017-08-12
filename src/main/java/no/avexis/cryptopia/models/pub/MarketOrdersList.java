@@ -1,24 +1,28 @@
 package no.avexis.cryptopia.models.pub;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class MarketOrdersList {
-    private List<MarketOrder> Buy;
-    private List<MarketOrder> Sell;
+    @SerializedName("Buy")
+    private List<MarketOrder> buy;
+    @SerializedName("Sell")
+    private List<MarketOrder> sell;
 
     public List<MarketOrder> getBuy() {
-        return Buy;
+        return buy;
     }
 
     public void setBuy(List<MarketOrder> buy) {
-        Buy = buy;
+        this.buy = buy;
     }
 
     public List<MarketOrder> getSell() {
-        return Sell;
+        return sell;
     }
 
     public void setSell(List<MarketOrder> sell) {
-        Sell = sell;
+        this.sell = sell;
     }
 }

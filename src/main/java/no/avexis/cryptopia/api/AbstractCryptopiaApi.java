@@ -19,10 +19,8 @@ abstract class AbstractCryptopiaApi {
         return jsonObject.get("Data");
     }
 
-    <T> T fromJson(final JsonElement element) {
-        final Type listType = new TypeToken<T>() {
-        }.getType();
-        return gson.fromJson(element, listType);
+    <T> T fromJson(final JsonElement element, final Type type) {
+        return gson.fromJson(element, type);
     }
 
     String addParams(final String method, Object... params) {

@@ -1,49 +1,56 @@
 package no.avexis.cryptopia.models.pub;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MarketOrder {
-    private Long TradePairId;
-    private String Label;
-    private double Price;
-    private double Volume;
-    private double Total;
+    @SerializedName("TradePairId")
+    private Long tradePairId;
+    @SerializedName("Label")
+    private String label;
+    @SerializedName("Price")
+    private double price;
+    @SerializedName("Volume")
+    private double volume;
+    @SerializedName("Total")
+    private double total;
 
     public Long getTradePairId() {
-        return TradePairId;
+        return tradePairId;
     }
 
     public void setTradePairId(Long tradePairId) {
-        TradePairId = tradePairId;
+        this.tradePairId = tradePairId;
     }
 
     public String getLabel() {
-        return Label;
+        return label;
     }
 
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
 
     public double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(double price) {
-        Price = price;
+        this.price = price;
     }
 
     public double getVolume() {
-        return Volume;
+        return volume;
     }
 
     public void setVolume(double volume) {
-        Volume = volume;
+        this.volume = volume;
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(double total) {
-        Total = total;
+        this.total = total;
     }
 }

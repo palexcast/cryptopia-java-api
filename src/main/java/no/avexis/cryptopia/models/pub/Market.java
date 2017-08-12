@@ -1,148 +1,166 @@
 package no.avexis.cryptopia.models.pub;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Market {
-    private Long TradePairId;
-    private String Label;
-    private double AskPrice;
-    private double BidPrice;
-    private double Low;
-    private double High;
-    private double Volume;
-    private double LastPrice;
-    private double BuyVolume;
-    private double SellVolume;
-    private double Change;
-    private double Open;
-    private double Close;
-    private double BaseVolume;
-    private double BaseBuyVolume;
-    private double BaseSellVolume;
+    @SerializedName("TradePairId")
+    private Long tradePairId;
+    @SerializedName("Label")
+    private String label;
+    @SerializedName("AskPrice")
+    private double askPrice;
+    @SerializedName("BidPrice")
+    private double bidPrice;
+    @SerializedName("Low")
+    private double low;
+    @SerializedName("High")
+    private double high;
+    @SerializedName("Volume")
+    private double volume;
+    @SerializedName("LastPrice")
+    private double lastPrice;
+    @SerializedName("BuyVolume")
+    private double buyVolume;
+    @SerializedName("SellVolume")
+    private double sellVolume;
+    @SerializedName("Change")
+    private double change;
+    @SerializedName("Open")
+    private double open;
+    @SerializedName("Close")
+    private double close;
+    @SerializedName("BaseVolume")
+    private double baseVolume;
+    @SerializedName("BaseBuyVolume")
+    private double baseBuyVolume;
+    @SerializedName("BaseSellVolume")
+    private double baseSellVolume;
 
     public Long getTradePairId() {
-        return TradePairId;
+        return tradePairId;
     }
 
     public void setTradePairId(Long tradePairId) {
-        TradePairId = tradePairId;
+        this.tradePairId = tradePairId;
     }
 
     public String getLabel() {
-        return Label;
+        return label;
     }
 
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
 
     public double getAskPrice() {
-        return AskPrice;
+        return askPrice;
     }
 
     public void setAskPrice(double askPrice) {
-        AskPrice = askPrice;
+        this.askPrice = askPrice;
     }
 
     public double getBidPrice() {
-        return BidPrice;
+        return bidPrice;
     }
 
     public void setBidPrice(double bidPrice) {
-        BidPrice = bidPrice;
+        this.bidPrice = bidPrice;
     }
 
     public double getLow() {
-        return Low;
+        return low;
     }
 
     public void setLow(double low) {
-        Low = low;
+        this.low = low;
     }
 
     public double getHigh() {
-        return High;
+        return high;
     }
 
     public void setHigh(double high) {
-        High = high;
+        this.high = high;
     }
 
     public double getVolume() {
-        return Volume;
+        return volume;
     }
 
     public void setVolume(double volume) {
-        Volume = volume;
+        this.volume = volume;
     }
 
     public double getLastPrice() {
-        return LastPrice;
+        return lastPrice;
     }
 
     public void setLastPrice(double lastPrice) {
-        LastPrice = lastPrice;
+        this.lastPrice = lastPrice;
     }
 
     public double getBuyVolume() {
-        return BuyVolume;
+        return buyVolume;
     }
 
     public void setBuyVolume(double buyVolume) {
-        BuyVolume = buyVolume;
+        this.buyVolume = buyVolume;
     }
 
     public double getSellVolume() {
-        return SellVolume;
+        return sellVolume;
     }
 
     public void setSellVolume(double sellVolume) {
-        SellVolume = sellVolume;
+        this.sellVolume = sellVolume;
     }
 
     public double getChange() {
-        return Change;
+        return change;
     }
 
     public void setChange(double change) {
-        Change = change;
+        this.change = change;
     }
 
     public double getOpen() {
-        return Open;
+        return open;
     }
 
     public void setOpen(double open) {
-        Open = open;
+        this.open = open;
     }
 
     public double getClose() {
-        return Close;
+        return close;
     }
 
     public void setClose(double close) {
-        Close = close;
+        this.close = close;
     }
 
     public double getBaseVolume() {
-        return BaseVolume;
+        return baseVolume;
     }
 
     public void setBaseVolume(double baseVolume) {
-        BaseVolume = baseVolume;
+        this.baseVolume = baseVolume;
     }
 
     public double getBaseBuyVolume() {
-        return BaseBuyVolume;
+        return baseBuyVolume;
     }
 
     public void setBaseBuyVolume(double baseBuyVolume) {
-        BaseBuyVolume = baseBuyVolume;
+        this.baseBuyVolume = baseBuyVolume;
     }
 
     public double getBaseSellVolume() {
-        return BaseSellVolume;
+        return baseSellVolume;
     }
 
     public void setBaseSellVolume(double baseSellVolume) {
-        BaseSellVolume = baseSellVolume;
+        this.baseSellVolume = baseSellVolume;
     }
 }

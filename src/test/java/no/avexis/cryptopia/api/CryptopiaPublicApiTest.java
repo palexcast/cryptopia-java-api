@@ -2,12 +2,13 @@ package no.avexis.cryptopia.api;
 
 
 import no.avexis.cryptopia.exceptions.MissingParameterException;
+import no.avexis.cryptopia.models.pub.Currency;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CryptopiaPublicApiTest {
     private static final String NAME_OR_IS_REQ = "Param \"Name or Id\" is required";
@@ -22,7 +23,9 @@ class CryptopiaPublicApiTest {
 
     @Test
     void getCurrencies() throws Exception {
-        api.getCurrencies();
+        List<Currency> currencyList = api.getCurrencies();
+        Currency cur = currencyList.get(0);
+        assertFalse(cur.getName().isEmpty());
     }
 
     @Test
@@ -57,14 +60,14 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarket_ThrowsNullpointer1() throws Exception {
+    void getMarket_MissingParameterExceptionBothNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarket(null, null);
         });
     }
 
     @Test
-    void getMarket_ThrowsNullpointer2() throws Exception {
+    void getMarket_MissingParameterExceptionNameOrIdNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarket(null, 24);
         });
@@ -81,7 +84,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketHistory_ThrowsNullpointer1() throws Exception {
+    void getMarketHistory_MissingParameterExceptionBothNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketHistory(null, null);
         });
@@ -89,7 +92,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketHistory_ThrowsNullpointer2() throws Exception {
+    void getMarketHistory_MissingParameterExceptionNameOrIdNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketHistory(null, 24);
         });
@@ -107,7 +110,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketOrders_ThrowsNullpointer1() throws Exception {
+    void getMarketOrders_ThrowsMissingParameterExceptionBothNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketOrders(null, null);
         });
@@ -115,7 +118,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketOrders_ThrowsNullpointer2() throws Exception {
+    void getMarketOrders_MissingParameterExceptionNameOrIdNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketOrders(null, 24);
         });
@@ -133,7 +136,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketOrderGroups_ThrowsNullpointer1() throws Exception {
+    void getMarketOrderGroups_ThrowsMissingParameterExceptionBothValuesNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketOrderGroups(null, null);
         });
@@ -141,7 +144,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketOrderGroups_ThrowsNullpointer2() throws Exception {
+    void getMarketOrderGroups_MissingParameterExceptionMarketsEmptyArray() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketOrderGroups(new String[0], 24);
         });
@@ -149,7 +152,7 @@ class CryptopiaPublicApiTest {
     }
 
     @Test
-    void getMarketOrderGroups_ThrowsNullpointer3() throws Exception {
+    void getMarketOrderGroups_MissingParameterExceptionMarketsNull() throws Exception {
         Throwable exception = assertThrows(MissingParameterException.class, () -> {
             api.getMarketOrderGroups(null, 24);
         });

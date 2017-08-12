@@ -1,103 +1,116 @@
 package no.avexis.cryptopia.models.priv;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Balance {
-    private Long CurrencyId;
-    private String Symbol;
-    private double Total;
-    private double Available;
-    private double Unconfirmed;
-    private double HeldForTrades;
-    private double PendingWithdraw0;
-    private String Address;
-    private String BaseAddress;
-    private String Status;
-    private String StatusMessage;
+    @SerializedName("CurrencyId")
+    private Long currencyId;
+    @SerializedName("Symbol")
+    private String symbol;
+    @SerializedName("Total")
+    private double total;
+    @SerializedName("Available")
+    private double available;
+    @SerializedName("Unconfirmed")
+    private double unconfirmed;
+    @SerializedName("HeldForTrades")
+    private double heldForTrades;
+    @SerializedName("PendingWithdraw")
+    private double pendingWithdraw;
+    @SerializedName("Address")
+    private String address;
+    @SerializedName("BaseAddress")
+    private String baseAddress;
+    @SerializedName("Status")
+    private String status;
+    @SerializedName("StatusMessage")
+    private String statusMessage;
 
     public Long getCurrencyId() {
-        return CurrencyId;
+        return currencyId;
     }
 
     public void setCurrencyId(Long currencyId) {
-        CurrencyId = currencyId;
+        currencyId = currencyId;
     }
 
     public String getSymbol() {
-        return Symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        Symbol = symbol;
+        this.symbol = symbol;
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(double total) {
-        Total = total;
+        this.total = total;
     }
 
     public double getAvailable() {
-        return Available;
+        return available;
     }
 
     public void setAvailable(double available) {
-        Available = available;
+        this.available = available;
     }
 
     public double getUnconfirmed() {
-        return Unconfirmed;
+        return unconfirmed;
     }
 
     public void setUnconfirmed(double unconfirmed) {
-        Unconfirmed = unconfirmed;
+        this.unconfirmed = unconfirmed;
     }
 
     public double getHeldForTrades() {
-        return HeldForTrades;
+        return heldForTrades;
     }
 
     public void setHeldForTrades(double heldForTrades) {
-        HeldForTrades = heldForTrades;
+        this.heldForTrades = heldForTrades;
     }
 
-    public double getPendingWithdraw0() {
-        return PendingWithdraw0;
+    public double getPendingWithdraw() {
+        return pendingWithdraw;
     }
 
-    public void setPendingWithdraw0(double pendingWithdraw0) {
-        PendingWithdraw0 = pendingWithdraw0;
+    public void setPendingWithdraw(double pendingWithdraw) {
+        this.pendingWithdraw = pendingWithdraw;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getBaseAddress() {
-        return BaseAddress;
+        return baseAddress;
     }
 
     public void setBaseAddress(String baseAddress) {
-        BaseAddress = baseAddress;
+        this.baseAddress = baseAddress;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getStatusMessage() {
-        return StatusMessage;
+        return statusMessage;
     }
 
     public void setStatusMessage(String statusMessage) {
-        StatusMessage = statusMessage;
+        this.statusMessage = statusMessage;
     }
 }

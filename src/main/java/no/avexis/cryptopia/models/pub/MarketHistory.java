@@ -1,67 +1,76 @@
 package no.avexis.cryptopia.models.pub;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MarketHistory {
-    private Long TradePairId;
-    private String Label;
-    private String Type;
-    private double Price;
-    private double Amount;
-    private double Total;
-    private double Timestamp;
+    @SerializedName("TradePairId")
+    private Long tradePairId;
+    @SerializedName("Label")
+    private String label;
+    @SerializedName("Type")
+    private String type;
+    @SerializedName("Price")
+    private double price;
+    @SerializedName("Amount")
+    private double amount;
+    @SerializedName("Total")
+    private double total;
+    @SerializedName("Timestamp")
+    private double timestamp;
 
     public Long getTradePairId() {
-        return TradePairId;
+        return tradePairId;
     }
 
     public void setTradePairId(Long tradePairId) {
-        TradePairId = tradePairId;
+        this.tradePairId = tradePairId;
     }
 
     public String getLabel() {
-        return Label;
+        return label;
     }
 
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(double price) {
-        Price = price;
+        this.price = price;
     }
 
     public double getAmount() {
-        return Amount;
+        return amount;
     }
 
     public void setAmount(double amount) {
-        Amount = amount;
+        this.amount = amount;
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(double total) {
-        Total = total;
+        this.total = total;
     }
 
     public double getTimestamp() {
-        return Timestamp;
+        return timestamp;
     }
 
     public void setTimestamp(double timestamp) {
-        Timestamp = timestamp;
+        this.timestamp = timestamp;
     }
 }

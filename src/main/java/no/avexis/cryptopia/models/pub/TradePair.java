@@ -1,139 +1,156 @@
 package no.avexis.cryptopia.models.pub;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TradePair {
-    private long Id;
-    private String Label;
-    private String Currency;
-    private String Symbol;
-    private String BaseCurrency;
-    private String BaseSymbol;
-    private String Status;
-    private String StatusMessage;
-    private double TradeFee;
-    private double MinimumTrade;
-    private double MaximumTrade;
-    private double MinimumBaseTrade;
-    private double MaximumBaseTrade;
-    private double MinimumPrice;
-    private double MaximumPrice;
+    @SerializedName("Id")
+    private long id;
+    @SerializedName("Label")
+    private String label;
+    @SerializedName("Currency")
+    private String currency;
+    @SerializedName("Symbol")
+    private String symbol;
+    @SerializedName("BaseCurrency")
+    private String baseCurrency;
+    @SerializedName("BaseSymbol")
+    private String baseSymbol;
+    @SerializedName("Status")
+    private String status;
+    @SerializedName("StatusMessage")
+    private String statusMessage;
+    @SerializedName("TradeFee")
+    private double tradeFee;
+    @SerializedName("MinimumTrade")
+    private double minimumTrade;
+    @SerializedName("MaximumTrade")
+    private double maximumTrade;
+    @SerializedName("MinimumBaseTrade")
+    private double minimumBaseTrade;
+    @SerializedName("MaximumBaseTrade")
+    private double maximumBaseTrade;
+    @SerializedName("MinimumPrice")
+    private double minimumPrice;
+    @SerializedName("MaximumPrice")
+    private double maximumPrice;
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getLabel() {
-        return Label;
+        return label;
     }
 
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
 
     public String getCurrency() {
-        return Currency;
+        return currency;
     }
 
     public void setCurrency(String currency) {
-        Currency = currency;
+        this.currency = currency;
     }
 
     public String getSymbol() {
-        return Symbol;
+        return symbol;
     }
 
     public void setSymbol(String symbol) {
-        Symbol = symbol;
+        this.symbol = symbol;
     }
 
     public String getBaseCurrency() {
-        return BaseCurrency;
+        return baseCurrency;
     }
 
     public void setBaseCurrency(String baseCurrency) {
-        BaseCurrency = baseCurrency;
+        this.baseCurrency = baseCurrency;
     }
 
     public String getBaseSymbol() {
-        return BaseSymbol;
+        return baseSymbol;
     }
 
     public void setBaseSymbol(String baseSymbol) {
-        BaseSymbol = baseSymbol;
+        this.baseSymbol = baseSymbol;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getStatusMessage() {
-        return StatusMessage;
+        return statusMessage;
     }
 
     public void setStatusMessage(String statusMessage) {
-        StatusMessage = statusMessage;
+        this.statusMessage = statusMessage;
     }
 
     public double getTradeFee() {
-        return TradeFee;
+        return tradeFee;
     }
 
     public void setTradeFee(double tradeFee) {
-        TradeFee = tradeFee;
+        this.tradeFee = tradeFee;
     }
 
     public double getMinimumTrade() {
-        return MinimumTrade;
+        return minimumTrade;
     }
 
     public void setMinimumTrade(double minimumTrade) {
-        MinimumTrade = minimumTrade;
+        this.minimumTrade = minimumTrade;
     }
 
     public double getMaximumTrade() {
-        return MaximumTrade;
+        return maximumTrade;
     }
 
     public void setMaximumTrade(double maximumTrade) {
-        MaximumTrade = maximumTrade;
+        this.maximumTrade = maximumTrade;
     }
 
     public double getMinimumBaseTrade() {
-        return MinimumBaseTrade;
+        return minimumBaseTrade;
     }
 
     public void setMinimumBaseTrade(double minimumBaseTrade) {
-        MinimumBaseTrade = minimumBaseTrade;
+        this.minimumBaseTrade = minimumBaseTrade;
     }
 
     public double getMaximumBaseTrade() {
-        return MaximumBaseTrade;
+        return maximumBaseTrade;
     }
 
     public void setMaximumBaseTrade(double maximumBaseTrade) {
-        MaximumBaseTrade = maximumBaseTrade;
+        this.maximumBaseTrade = maximumBaseTrade;
     }
 
     public double getMinimumPrice() {
-        return MinimumPrice;
+        return minimumPrice;
     }
 
     public void setMinimumPrice(double minimumPrice) {
-        MinimumPrice = minimumPrice;
+        this.minimumPrice = minimumPrice;
     }
 
     public double getMaximumPrice() {
-        return MaximumPrice;
+        return maximumPrice;
     }
 
     public void setMaximumPrice(double maximumPrice) {
-        MaximumPrice = maximumPrice;
+        this.maximumPrice = maximumPrice;
     }
 }
