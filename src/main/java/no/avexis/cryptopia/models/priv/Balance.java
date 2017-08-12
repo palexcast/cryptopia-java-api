@@ -31,7 +31,7 @@ public class Balance {
     }
 
     public void setCurrencyId(Long currencyId) {
-        currencyId = currencyId;
+        this.currencyId = currencyId;
     }
 
     public String getSymbol() {
