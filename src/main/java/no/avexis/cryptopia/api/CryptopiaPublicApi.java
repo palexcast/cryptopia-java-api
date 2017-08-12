@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import no.avexis.cryptopia.client.CryptopiaPublicClient;
 import no.avexis.cryptopia.exceptions.CryptopiaException;
-import no.avexis.cryptopia.models.priv.Balance;
 import no.avexis.cryptopia.models.pub.*;
 
 import java.util.List;

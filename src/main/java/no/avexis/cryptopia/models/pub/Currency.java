@@ -2,8 +2,6 @@ package no.avexis.cryptopia.models.pub;
 
 import com.google.gson.annotations.SerializedName;
 
-import javax.xml.bind.annotation.XmlElement;
-
 public class Currency {
     @SerializedName("DepositConfirmations")
     private Long depositConfirmations;
