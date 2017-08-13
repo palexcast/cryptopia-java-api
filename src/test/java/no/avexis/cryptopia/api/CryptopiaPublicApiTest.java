@@ -72,12 +72,14 @@ class CryptopiaPublicApiTest {
         void MissingParameterException_BothAreNull() throws Exception {
             Throwable exception = assertThrows(MissingParameterException.class,
                     () -> api.getMarket(null, null));
+            assertEquals(NAME_OR_IS_REQ, exception.getMessage());
         }
 
         @Test
         void MissingParameterException_NameOrIdIsNull() throws Exception {
             Throwable exception = assertThrows(MissingParameterException.class,
                     () -> api.getMarket(null, 24));
+            assertEquals(NAME_OR_IS_REQ, exception.getMessage());
         }
     }
 
